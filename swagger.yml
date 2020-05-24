@@ -1,0 +1,67 @@
+swagger: "2.0"
+info:
+  description: This is the swagger file that goes with our server code ,  this is ademo you only have [0,1,2] pet_ids 
+  version: "1.0.0"
+  title: Swagger ReST Article
+consumes:
+  - application/json
+produces:
+  - application/json
+
+basePath: /api
+
+# Paths supported by the server application
+paths:
+
+  /pets/bid: 
+    post:
+      operationId: Pets.create
+      tags:
+        - Pets
+      summary: make abid on a certain  pet
+      description: make abid on a certain  pet
+      consumes:
+      - "multipart/form-data"
+      produces:
+      - "application/json"
+      parameters:
+        - name: pet_id
+          in: "formData"
+          description: pet_id to make abid on 
+          required: True
+          type: "string"
+        - name: user_name
+          in: "formData"
+          description: user make the bid
+          required: True
+          type: "string"
+        - name: bid
+          in: "formData"
+          description: bid to pay
+          required: True
+          type: "integer"
+      responses:
+        200:
+          description: Successfully updated person in people list
+  /pets/{pet_id}:
+    get:
+      tags:
+      - Pets
+      summary: "Find pet by ID and list all bids"
+      description: "Returns a single pet"
+      operationId: Pets.list_bids
+      produces:
+      - "application/json"
+      parameters:
+      - name: "pet_id"
+        in: "path"
+        description: "ID of pet to return"
+        required: True
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "Pet not found"  
