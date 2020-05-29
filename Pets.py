@@ -1,11 +1,5 @@
-"""
-This is the people module and supports all the ReST actions for the
-PEOPLE collection
-"""
 
-# System modules
 
-# 3rd party modules
 from flask import make_response, abort
 
 
